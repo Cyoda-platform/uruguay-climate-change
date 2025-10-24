@@ -1,0 +1,251 @@
+.ml-page {
+  padding-bottom: 2rem;
+}
+
+.info-section {
+  margin-bottom: 3rem;
+}
+
+.ml-models-section {
+  margin-top: 3rem;
+}
+
+.section-title {
+  color: #10b981;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.methods-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.model-selector {
+  margin-bottom: 2rem;
+}
+
+.model-selector label {
+  color: #10b981;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.model-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.model-btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: rgba(226, 232, 240, 0.05);
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.model-btn:hover {
+  background: rgba(226, 232, 240, 0.1);
+  border-color: rgba(16, 185, 129, 0.5);
+  transform: translateY(-2px);
+}
+
+.model-btn.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: #10b981;
+  color: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.model-info-card {
+  background: rgba(226, 232, 240, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.model-info-card h3 {
+  color: #10b981;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.model-info-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.model-info-card li {
+  color: rgba(226, 232, 240, 0.8);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.model-info-card li:last-child {
+  border-bottom: none;
+}
+
+.model-info-card strong {
+  color: #10b981;
+}
+
+.ml-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: rgba(226, 232, 240, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.feature-card h3 {
+  color: #10b981;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.feature-card p {
+  color: rgba(226, 232, 240, 0.7);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.feature-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.feature-stats .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-stats .value {
+  color: #10b981;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.feature-stats .label {
+  color: rgba(226, 232, 240, 0.6);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.training-required {
+  background: rgba(226, 232, 240, 0.05);
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.training-required h3 {
+  color: #fbbf24;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.training-required p {
+  color: rgba(226, 232, 240, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.training-instructions {
+  background: rgba(17, 16, 28, 0.5);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.training-instructions h4 {
+  color: #10b981;
+  margin-bottom: 0.75rem;
+}
+
+.training-instructions code {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  color: #10b981;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+
+.model-status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.status-item {
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+}
+
+.status-item.trained {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.status-item.not-trained {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.status-item .icon {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .model-buttons {
+    flex-direction: column;
+  }
+
+  .ml-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-stats {
+    justify-content: center;
+  }
+}

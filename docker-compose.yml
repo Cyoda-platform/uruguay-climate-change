@@ -1,0 +1,150 @@
+version: '3.8'
+
+services:
+  # Backend API service
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: uruguay-climate-backend
+    ports:
+      - "${BACKEND_PORT:-5000}:5000"
+    environment:
+      # Flask configuration
+      - FLASK_APP=backend/app.py
+      - FLASK_ENV=${FLASK_ENV:-production}
+      - SECRET_KEY=${SECRET_KEY:-change-this-in-production}
+
+      # API Keys
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - CYODA_API_KEY=${CYODA_API_KEY:-}
+      - CYODA_API_URL=${CYODA_API_URL:-https://api.cyoda.net}
+
+      # Paths
+      - MODEL_PATH=/app/models
+      - DATA_PATH=/app/src/data
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+
+      # Optional: Redis connection
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      # Persist trained models
+      - ./models:/app/models
+      # Persist data files
+      - ./src/data:/app/src/data
+      # Persist logs
+      - ./logs:/app/logs
+    networks:
+      - climate-network
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Frontend web application
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: uruguay-climate-frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:5000}
+      - REACT_APP_ENABLE_GEMINI=${REACT_APP_ENABLE_GEMINI:-true}
+      - REACT_APP_ENABLE_CYODA=${REACT_APP_ENABLE_CYODA:-true}
+    depends_on:
+      - backend
+    networks:
+      - climate-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Redis cache (optional - for performance optimization)
+  redis:
+    image: redis:7-alpine
+    container_name: uruguay-climate-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - climate-network
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+
+  # Optional: Model training job (run once to train models)
+  model-trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: uruguay-climate-trainer
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./models:/app/models
+      - ./src/data:/app/src/data
+      - ./logs:/app/logs
+    networks:
+      - climate-network
+    command: python scripts/train_ml_models.py
+    profiles:
+      - training  # Only run when explicitly specified
+    restart: "no"
+
+networks:
+  climate-network:
+    driver: bridge
+    name: uruguay-climate-network
+
+volumes:
+  redis-data:
+    name: uruguay-climate-redis-data
+  models:
+    name: uruguay-climate-models
+  logs:
+    name: uruguay-climate-logs
+
+# Usage:
+# ------
+# 1. Start main services:
+#    docker-compose up -d
+#
+# 2. Start with model training:
+#    docker-compose --profile training up
+#
+# 3. View logs:
+#    docker-compose logs -f backend
+#    docker-compose logs -f frontend
+#
+# 4. Stop services:
+#    docker-compose down
+#
+# 5. Stop and remove volumes:
+#    docker-compose down -v
+#
+# 6. Rebuild images:
+#    docker-compose build --no-cache
+#
+# 7. Scale backend (horizontal scaling):
+#    docker-compose up -d --scale backend=3

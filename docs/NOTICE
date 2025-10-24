@@ -1,0 +1,116 @@
+Uruguay Climate Change Monitoring & AI Analysis System
+Copyright (c) 2025 Uruguay Climate Change Monitoring Team
+
+This software is licensed under the Apache License 2.0 (see LICENSE file).
+
+================================================================================
+
+THIRD-PARTY COMPONENTS AND ATTRIBUTIONS
+
+This software includes or depends on the following third-party components:
+
+1. World Bank Climate Data
+   Copyright (c) The World Bank Group
+   License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+   Source: https://climateknowledgeportal.worldbank.org/, https://data.humdata.org/dataset/world-bank-climate-change-indicators-for-uruguay
+
+   Data attribution required when using or redistributing:
+   "Data source: World Bank Climate Change Knowledge Portal"
+
+2. TensorFlow
+   Copyright (c) Google LLC
+   License: Apache License 2.0
+   Source: https://github.com/tensorflow/tensorflow
+
+3. Prophet (Facebook Prophet)
+   Copyright (c) Facebook, Inc. and its affiliates
+   License: MIT License
+   Source: https://github.com/facebook/prophet
+
+4. scikit-learn
+   Copyright (c) scikit-learn developers
+   License: BSD 3-Clause License
+   Source: https://github.com/scikit-learn/scikit-learn
+
+5. Flask
+   Copyright (c) Pallets
+   License: BSD 3-Clause License
+   Source: https://github.com/pallets/flask
+
+6. React
+   Copyright (c) Meta Platforms, Inc. and affiliates
+   License: MIT License
+   Source: https://github.com/facebook/react
+
+7. XGBoost
+   Copyright (c) DMLC team
+   License: Apache License 2.0
+   Source: https://github.com/dmlc/xgboost
+
+8. LightGBM
+   Copyright (c) Microsoft Corporation
+   License: MIT License
+   Source: https://github.com/microsoft/LightGBM
+
+9. NumPy
+   Copyright (c) NumPy developers
+   License: BSD 3-Clause License
+   Source: https://github.com/numpy/numpy
+
+10. Pandas
+    Copyright (c) Pandas development team
+    License: BSD 3-Clause License
+    Source: https://github.com/pandas-dev/pandas
+
+11. Recharts
+    Copyright (c) Recharts contributors
+    License: MIT License
+    Source: https://github.com/recharts/recharts
+
+12. Google Generative AI (Gemini)
+    Service provided by Google LLC
+    Terms: https://ai.google.dev/terms
+    Privacy: https://policies.google.com/privacy
+    Note: Requires API key and subject to Google's terms
+
+13. Cyoda MCP
+    Platform provided by Cyoda
+    Terms: https://cyoda.com/terms-of-service
+    Note: Optional integration; not required for core functionality
+
+For a complete list of all dependencies and their respective licenses:
+- Python dependencies: See requirements.txt
+- JavaScript dependencies: See frontend/package.json
+
+================================================================================
+
+DISCLAIMER
+
+This software is provided for educational, research, and informational purposes.
+Climate predictions and AI-generated insights should not be used as the sole
+basis for critical decisions affecting human health, safety, or welfare.
+
+Always consult with professional meteorologists, climate scientists, and relevant
+authorities for important climate-related decisions.
+
+The authors, contributors, and data providers are not responsible for any damages,
+losses, or consequences arising from the use of this software or reliance on its
+predictions or recommendations.
+
+================================================================================
+
+ACKNOWLEDGMENTS
+
+We thank:
+- The World Bank for providing open climate data
+- The open-source community for excellent ML/AI libraries
+- Google for Gemini AI access
+- Cyoda for MCP platform integration
+- Uruguay's climate science community for domain expertise
+- All contributors and users of this project
+
+================================================================================
+
+For questions about licensing or attributions:
+- GitHub: https://github.com/YOUR_USERNAME/uruguay-climate-change
+- Issues: https://github.com/YOUR_USERNAME/uruguay-climate-change/issues

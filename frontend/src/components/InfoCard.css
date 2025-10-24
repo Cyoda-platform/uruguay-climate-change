@@ -1,0 +1,250 @@
+.info-card {
+  background: rgba(226, 232, 240, 0.05);
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #10b981, #34d399, #10b981);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.info-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+.info-card.expanded {
+  background: rgba(226, 232, 240, 0.08);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+/* Severity variants */
+.info-card.info {
+  border-left: 4px solid #3b82f6;
+}
+
+.info-card.warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.info-card.critical {
+  border-left: 4px solid #ef4444;
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+.info-card.success {
+  border-left: 4px solid #10b981;
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    border-color: rgba(239, 68, 68, 0.8);
+  }
+}
+
+.info-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.info-card-icon {
+  font-size: 3rem;
+  line-height: 1;
+  animation: bounce 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.info-card:hover .info-card-icon {
+  animation: spin-bounce 0.6s ease-in-out;
+}
+
+@keyframes spin-bounce {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.info-card-title-section {
+  flex: 1;
+}
+
+.info-card-title {
+  color: #10b981;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.info-card-description {
+  color: rgba(226, 232, 240, 0.8);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.expand-icon {
+  color: #10b981;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+}
+
+.expand-icon.rotated {
+  transform: rotate(90deg);
+}
+
+.info-card-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(16, 185, 129, 0.2);
+  color: rgba(226, 232, 240, 0.9);
+  line-height: 1.8;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.info-card-details h4 {
+  color: #10b981;
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.info-card-details h4:first-child {
+  margin-top: 0;
+}
+
+.info-card-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.info-card-details li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+}
+
+.info-card-details li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.info-card-details p {
+  margin: 0.75rem 0;
+}
+
+.info-card-details strong {
+  color: #34d399;
+  font-weight: 600;
+}
+
+.highlight-box {
+  background: rgba(16, 185, 129, 0.1);
+  border-left: 3px solid #10b981;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+
+.highlight-box.warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: #f59e0b;
+}
+
+.highlight-box.critical {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #ef4444;
+}
+
+.method-tag {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0.25rem;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+@media (max-width: 768px) {
+  .info-card-header {
+    flex-direction: column;
+  }
+  
+  .info-card-icon {
+    font-size: 2.5rem;
+  }
+  
+  .info-card-title {
+    font-size: 1.2rem;
+  }
+  
+  .expand-icon {
+    align-self: flex-end;
+  }
+}
+

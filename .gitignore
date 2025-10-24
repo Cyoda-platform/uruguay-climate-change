@@ -205,3 +205,26 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Data files (keep data directory structure but ignore the actual data)
+data/raw/*
+data/processed/*
+data/external/*
+data/interim/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+!data/interim/.gitkeep
+
+# Model files
+models/*
+!models/.gitkeep
+
+# Reports
+reports/figures/*
+reports/metrics/*
+!reports/figures/.gitkeep
+!reports/metrics/.gitkeep
+
+# Logs directory
+logs/
