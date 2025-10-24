@@ -152,9 +152,6 @@ npm start
 
 # Application runs at http://localhost:3000
 ```
-
-See [SETUP.md](SETUP.md) for detailed installation instructions.
-
 ## 🔬 ML Model Training
 
 ### Training Pipeline
@@ -175,8 +172,6 @@ python -m src.models.climate_classifier
 - **Prophet Seasonal Analysis**: MAPE < 8%
 - **Anomaly Detection**: 95%+ precision, 92%+ recall
 - **Climate Classifier**: 89% accuracy on pattern recognition
-
-See [ML_MODELS.md](ML_MODELS.md) for training details and evaluation metrics.
 
 ## 🎯 Key Features & Usage
 
@@ -326,7 +321,6 @@ This project adheres to responsible AI principles:
 - **Environmental Impact**: Optimized model architectures for energy efficiency
 - **Accessibility**: Free and open-source for public benefit
 
-See [ETHICS.md](ETHICS.md) for detailed AI ethics statement.
 
 ## 📜 License
 
